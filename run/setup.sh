@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Setup script for the Python DBMS project
+# This script sets up the virtual environment, installs dependencies, and initializes the MySQL database
+
 # Colors for better readability
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'

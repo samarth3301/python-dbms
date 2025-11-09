@@ -1,6 +1,19 @@
+#type:ignore
+"""
+A simple DBMS project for managing space missions using MySQL and Python.
+This script provides a command-line interface for admins and users to interact with the missions database.
+Admins can view, add, update, and delete missions, while users can only view them.
+"""
+
 import mysql.connector
 
 def get_mysql_connection():
+    """
+    Establishes and returns a connection to the MySQL database.
+    
+    Returns:
+        mysql.connector.connection.MySQLConnection: The database connection object.
+    """
     return mysql.connector.connect(
         host="localhost",
         user="test",
@@ -9,6 +22,12 @@ def get_mysql_connection():
     )
 
 def show_missions(mission_type):
+    """
+    Displays all missions of a specific type from the database.
+    
+    Args:
+        mission_type (str): The type of missions to display (e.g., 'lunar', 'solar', 'interplanetary').
+    """
     try:
         conn = get_mysql_connection()
         cursor = conn.cursor()
@@ -25,6 +44,10 @@ def show_missions(mission_type):
         print("MySQL Error:", err)
 
 def delete_mission():
+    """
+    Deletes a mission from the database based on the provided ID.
+    Prompts the user for the mission ID.
+    """
     mission_id = input("Enter the ID of the mission to delete: ")
     try:
         conn = get_mysql_connection()
@@ -42,6 +65,10 @@ def delete_mission():
         print("MySQL Error:", err)
 
 def update_mission():
+    """
+    Updates an existing mission in the database.
+    Prompts the user for the mission ID and new details.
+    """
     mission_id = input("Enter the ID of the mission to update: ")
     name = input("Enter new mission name: ")
     mission_type = input("Enter new mission type (lunar/solar/interplanetary): ")
@@ -64,6 +91,10 @@ def update_mission():
         print("MySQL Error:", err)
 
 def show_mission_by_id():
+    """
+    Displays details of a specific mission by its ID.
+    Prompts the user for the mission ID.
+    """
     mission_id = input("Enter the ID of the mission to view: ")
     try:
         conn = get_mysql_connection()
@@ -82,6 +113,10 @@ def show_mission_by_id():
         print("MySQL Error:", err)
 
 def insert_mission():
+    """
+    Inserts a new mission into the database.
+    Prompts the user for mission details.
+    """
     name = input("Enter mission name: ")
     mission_type = input("Enter mission type (lunar/solar/interplanetary): ")
     start_date = input("Enter start date (YYYY-MM-DD): ")
@@ -100,6 +135,10 @@ def insert_mission():
         print("MySQL Error:", err)
 
 def main_menu():
+    """
+    Displays the main menu for user login.
+    Allows selection between Admin and User modes.
+    """
     print("\nChoose login user:")
     print("1. Admin")
     print("2. User")
@@ -116,6 +155,10 @@ def main_menu():
         print("Invalid input.")
 
 def admin_menu():
+    """
+    Displays the admin menu with options to manage missions.
+    Loops until the user chooses to exit.
+    """
     while True:
         print("\nAdmin Menu")
         print("1. Show Missions")
@@ -142,6 +185,10 @@ def admin_menu():
             print("Invalid input.")
 
 def user_menu():
+    """
+    Displays the user menu with limited options to view missions.
+    Loops until the user chooses to exit.
+    """
     while True:
         print("\nUser Menu")
         print("1. Show Missions")
@@ -156,4 +203,5 @@ def user_menu():
             print("Invalid input.")
 
 if __name__ == "__main__":
+    # Start the application by displaying the main menu
     main_menu()

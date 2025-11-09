@@ -4,4 +4,6 @@ version = "0.1.0"
 description = "a simple DBMS project using mysql and python"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "mysql-connector>=2.2.9",
+]
