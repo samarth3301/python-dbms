@@ -180,113 +180,6 @@ def insert_mission():
     except mysql.connector.Error as err:
         print("MySQL Error:", err)
 
-def main_menu():
-    """
-    Displays the main menu for user login.
-    Allows selection between Admin and User modes.
-    """
-    # Ensure the database table exists
-    ensure_table_exists()
-    
-    print("\nChoose login user:")
-    print("1. Admin")
-    print("2. User")
-    choice = input("Enter choice: ")
-    if choice == '1':
-        password = input("Enter the Admin password: ")
-        if password == "ISROBOARD":
-            admin_menu()
-        else:
-            print("Invalid password.")
-    elif choice == '2':
-        user_menu()
-    else:
-        print("Invalid input.")
-
-def admin_menu():
-    """
-    Displays the admin menu with options to manage missions.
-    Loops until the user chooses to exit.
-    """
-    while True:
-        print("\nAdmin Menu")
-        print("1. Show Missions")
-        print("2. Show Mission by ID")
-        print("3. Add Mission")
-        print("4. Delete Mission")
-        print("5. Update Mission")
-        print("6. Show Contacts")
-        print("7. Add Contact")
-        print("8. Update Contact")
-        print("9. Delete Contact")
-        print("10. Show Planned Missions")
-        print("11. Add Planned Mission")
-        print("12. Update Planned Mission")
-        print("13. Delete Planned Mission")
-        print("14. Planned Missions")
-        print("15. Contact Us")
-        print("16. Exit")
-        choice = input("Enter choice: ")
-        if choice == '1':
-            mission_type = input("Enter mission type to view (lunar/solar/interplanetary): ")
-            show_missions(mission_type)
-        elif choice == '2':
-            show_mission_by_id()
-        elif choice == '3':
-            insert_mission()
-        elif choice == '4':
-            delete_mission()
-        elif choice == '5':
-            update_mission()
-        elif choice == '6':
-            show_contacts()
-        elif choice == '7':
-            add_contact()
-        elif choice == '8':
-            update_contact()
-        elif choice == '9':
-            delete_contact()
-        elif choice == '10':
-            show_planned_missions()
-        elif choice == '11':
-            add_planned_mission()
-        elif choice == '12':
-            update_planned_mission()
-        elif choice == '13':
-            delete_planned_mission()
-        elif choice == '14':
-            planned()
-        elif choice == '15':
-            contact()
-        elif choice == '16':
-            break
-        else:
-            print("Invalid input.")
-
-def user_menu():
-    """
-    Displays the user menu with limited options to view missions.
-    Loops until the user chooses to exit.
-    """
-    while True:
-        print("\nUser Menu")
-        print("1. Show Missions")
-        print("2. Planned Missions")
-        print("3. Contact Us")
-        print("4. Exit")
-        choice = input("Enter choice: ")
-        if choice == '1':
-            mission_type = input("Enter mission type to view (lunar/solar/interplanetary): ")
-            show_missions(mission_type)
-        elif choice == '2':
-            planned()
-        elif choice == '3':
-            contact()
-        elif choice == '4':
-            break
-        else:
-            print("Invalid input.")
-
 def planned():
     """
     Displays a list of planned missions and allows the user to view details of a selected mission.
@@ -521,6 +414,114 @@ def delete_planned_mission():
         conn.close()
     except mysql.connector.Error as err:
         print("MySQL Error:", err)
+
+
+def main_menu():
+    """
+    Displays the main menu for user login.
+    Allows selection between Admin and User modes.
+    """
+    # Ensure the database table exists
+    ensure_table_exists()
+    
+    print("\nChoose login user:")
+    print("1. Admin")
+    print("2. User")
+    choice = input("Enter choice: ")
+    if choice == '1':
+        password = input("Enter the Admin password: ")
+        if password == "ISROBOARD":
+            admin_menu()
+        else:
+            print("Invalid password.")
+    elif choice == '2':
+        user_menu()
+    else:
+        print("Invalid input.")
+
+def admin_menu():
+    """
+    Displays the admin menu with options to manage missions.
+    Loops until the user chooses to exit.
+    """
+    while True:
+        print("\nAdmin Menu")
+        print("1. Show Missions")
+        print("2. Show Mission by ID")
+        print("3. Add Mission")
+        print("4. Delete Mission")
+        print("5. Update Mission")
+        print("6. Show Contacts")
+        print("7. Add Contact")
+        print("8. Update Contact")
+        print("9. Delete Contact")
+        print("10. Show Planned Missions")
+        print("11. Add Planned Mission")
+        print("12. Update Planned Mission")
+        print("13. Delete Planned Mission")
+        print("14. Planned Missions")
+        print("15. Contact Us")
+        print("16. Exit")
+        choice = input("Enter choice: ")
+        if choice == '1':
+            mission_type = input("Enter mission type to view (lunar/solar/interplanetary): ")
+            show_missions(mission_type)
+        elif choice == '2':
+            show_mission_by_id()
+        elif choice == '3':
+            insert_mission()
+        elif choice == '4':
+            delete_mission()
+        elif choice == '5':
+            update_mission()
+        elif choice == '6':
+            show_contacts()
+        elif choice == '7':
+            add_contact()
+        elif choice == '8':
+            update_contact()
+        elif choice == '9':
+            delete_contact()
+        elif choice == '10':
+            show_planned_missions()
+        elif choice == '11':
+            add_planned_mission()
+        elif choice == '12':
+            update_planned_mission()
+        elif choice == '13':
+            delete_planned_mission()
+        elif choice == '14':
+            planned()
+        elif choice == '15':
+            contact()
+        elif choice == '16':
+            break
+        else:
+            print("Invalid input.")
+
+def user_menu():
+    """
+    Displays the user menu with limited options to view missions.
+    Loops until the user chooses to exit.
+    """
+    while True:
+        print("\nUser Menu")
+        print("1. Show Missions")
+        print("2. Planned Missions")
+        print("3. Contact Us")
+        print("4. Exit")
+        choice = input("Enter choice: ")
+        if choice == '1':
+            mission_type = input("Enter mission type to view (lunar/solar/interplanetary): ")
+            show_missions(mission_type)
+        elif choice == '2':
+            planned()
+        elif choice == '3':
+            contact()
+        elif choice == '4':
+            break
+        else:
+            print("Invalid input.")
 
 if __name__ == "__main__":
     # Start the application by displaying the main menu
